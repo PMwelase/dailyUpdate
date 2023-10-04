@@ -1,6 +1,6 @@
 import requests
 
-LICENSE_KEY = "05F040E5-4A394118-BE194A3D-7192DB78"
+LICENSE_KEY = os.environ.get("KEY")
 eskom_url = "https://developer.sepush.co.za/business/2.0/area?id=ethekwini3-12a-cbdeast&test=current"
 payload={}
 headers = {
