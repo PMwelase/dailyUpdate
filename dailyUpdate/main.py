@@ -18,7 +18,7 @@ df = pd.read_csv("subs.csv")
 
 if __name__ == "__main__": 
     from_email='pmwelase023@student.wethinkcode.co.za'
-    password="ugfg tfht geck izxr"
+    password=os.environ.get("PASSWORD")
 
     morning_weather = morning_weather()
     afternoon_weather = afternoon_weather()
