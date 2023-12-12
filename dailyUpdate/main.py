@@ -20,6 +20,27 @@ if __name__ == "__main__":
     from_email='pmwelase023@student.wethinkcode.co.za'
     password=os.environ.get("PASSWORD")
 
+    from datetime import datetime as dt
+import smtplib
+import pandas as pd
+import weather
+import loadshedding
+
+
+# GET TIME
+now = dt.now()
+today = now.weekday()
+
+
+# HOW TO SEND EMAIL
+df = pd.read_csv("subs.csv")
+
+
+
+if __name__ == "__main__":
+    from_email='pmwelase023@student.wethinkcode.co.za'
+    password="ugfg tfht geck izxr"
+
     morning_weather = weather.morning_weather()
     afternoon_weather = weather.afternoon_weather()
     evening_weather = weather.evening_weather()
@@ -28,10 +49,9 @@ if __name__ == "__main__":
     if weather.rain() == True:
         content += "You might want to carry an umbrella.\n"
 
-    if len(loadshedding.affected_hours) > 0:
-        content += f"There'll likely be loadshedding at the Durban Campus today at {(loadshedding.all_affected_hours())[0][0:5]}\n\n"
-        if len(loadshedding.affected_hours) == 2:
-            content += f"Make sure you've saved your work before then."
+    if len(loadshedding.all_affected_hours()) > 0:
+        content += f"There'll likely be loadshedding at the Durban Campus today at {loadshedding.all_affected_hours()[0][0:5]}\n\n"
+        content += f"Make sure you've saved your work before then."
 
     else:
         content += f"We are currently NOT expecting any loadshedding today."
@@ -48,6 +68,7 @@ if __name__ == "__main__":
                 msg=f"Subject:Daily Update\n\nHi {row['name']},\n\n{content}\n\nWarm Regards,\nPhumelela"
 
         )
+
 
 
 
