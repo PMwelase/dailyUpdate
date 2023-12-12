@@ -14,6 +14,7 @@ response = response.json()
 
 print(response)
 stage = int(response["events"][0]["note"][6]) -1
+print(stage)
 affected_hours = response["schedule"]["days"][0]["stages"][stage]
 # print(affected_hours)
 # print(stage)
@@ -25,4 +26,7 @@ def all_affected_hours():
             all_hours.append(n)
 
     return all_hours
+
+
+print(all_affected_hours())
     
